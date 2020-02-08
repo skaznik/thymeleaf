@@ -11,11 +11,11 @@
 <body>
 <form action="#" th:action="@{/addUser}" method="post" th:object="${user}">
    <label FOR="imie">Imie</label>
-    <input type = "text" th:text="*{imie}" id ="imie" />
+    <input type = "text" th:field="*{imie}" id ="imie" />
     <label FOR="nazwisko">Nazwisko</label>
-    <input type = "text" th:text="*{nazwisko}" id ="nazwisko" />
+    <input type = "text" th:field="*{nazwisko}" id ="nazwisko" />
     <label FOR="wiek">Wiek</label>
-    <input type="number" th:text="*{wiek}" id ="wiek" />
+    <input type="number" th:field="*{wiek}" id ="wiek" />
     <br>
     <input type="submit">
 </form>
