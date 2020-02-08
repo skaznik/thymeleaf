@@ -7,6 +7,7 @@ import java.util.*;
 
 @Component
 public class PatientService {
+    public static Object listaSkierowan;
     private Map<Integer, SkierowanieDoLekarza> patientMap = new HashMap<>();
 
 public SkierowanieDoLekarza createSkierowanie(String lekarz, String pacjent, Date termin) {

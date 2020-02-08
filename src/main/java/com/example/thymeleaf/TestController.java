@@ -59,7 +59,7 @@ public class TestController {
 
     @PostMapping("/addUser")
     public String createUser(@ModelAttribute User user, BindingResult bindingResult, Model model) {
-        validate(user, bindingResult);
+        //validate(user, bindingResult);
             if(bindingResult.hasErrors()) {
                 model.addAttribute("user", user);
             return "add-user";
