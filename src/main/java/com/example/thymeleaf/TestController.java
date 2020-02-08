@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TestController {
@@ -33,11 +30,22 @@ public class TestController {
         return "list-users-view";
     }
 
+    //@GetMapping("/getUser/{id}")
+    //public String getUser(@PathVariable int id, Model model) {
+        //User user = userService.getUser(id);
+       // if(user == null) {
+            //throw new NotFoundException();
+       // }
+       // model.addAttribute("user", user);
+       // return "user-details";
+    //}
+
     @GetMapping("/getUser/{id}")
-    public String getUser(@PathVariable int id, Model model) {
-        User user = userService.getUser(id);
+    public String getUser(@PathVariable String id, Model model) {
+        int i = Integer.parseInt(id);
+        User user = userService.getUser(i);
         if(user == null) {
-            throw new NotFoundException();
+            throw new NumberFormatException();
         }
         model.addAttribute("user", user);
         return "user-details";
@@ -59,6 +67,16 @@ public class TestController {
         userService.createUser(user.getImie(), user.getNazwisko(), user.getWiek());
         return "redirect:/listUsers";
     }
+@ExceptionHandler(NotFoundException.class)
+public String notFound() {
+        return "404";
+}
+
+@ExceptionHandler(NumberFormatException.class)
+public String notNumber() {
+        return "103";
+}
+
 
     public void validate(User user, BindingResult bindingResult) {
         if (user.getImie() == null || user.getImie().isEmpty()) {
