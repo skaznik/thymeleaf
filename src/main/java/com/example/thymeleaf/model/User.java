@@ -1,10 +1,16 @@
 package com.example.thymeleaf.model;
 
+import javax.validation.constraints.NegativeOrZero;
+import javax.validation.constraints.NotEmpty;
+
 public class User {
 
     int id;
+    @NotEmpty
     String imie;
+    @NotEmpty
     String nazwisko;
+    @NegativeOrZero
     int wiek;
 
     public User(int id, String imie, String nazwisko, int wiek) {
