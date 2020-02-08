@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class TestController {
@@ -25,7 +24,19 @@ public class TestController {
         //users.add(new User(11,"Adam", "Skaźnik", 43));
         model.addAttribute("users", userService.listUsers());
         //model.addAttribute("styl", "color: red;");
-        return "list-users-wiev";
+        return "list-users-view";
+    }
+
+    @GetMapping("/addUser")
+    public String addUser(Model model) {
+        model.addAttribute("user", new User());
+        return "add-user";
+    }
+
+    @PostMapping("/addUser")
+    public String createUser(@ModelAttribute User user, Model model) {
+        userService.createUser(user.getImie(), user.getNazwisko(), user.getWiek());
+        return "redirect:/listUsers";
     }
 
 }

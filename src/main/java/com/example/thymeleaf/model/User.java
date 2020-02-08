@@ -14,6 +14,10 @@ public class User {
         this.wiek = wiek;
     }
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }

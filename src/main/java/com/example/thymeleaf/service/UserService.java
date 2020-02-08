@@ -29,6 +29,6 @@ public class UserService {
     }
 
     public User getUser (int id) {
-        return userMap.get(id)
+        return userMap.get(id);
     }
 }
