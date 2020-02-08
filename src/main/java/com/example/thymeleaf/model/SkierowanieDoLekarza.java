@@ -1,11 +1,14 @@
 package com.example.thymeleaf.model;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 public class SkierowanieDoLekarza {
 
     int id;
+
     String lekarz;
+
     String pacjent;
     Date termin;
 

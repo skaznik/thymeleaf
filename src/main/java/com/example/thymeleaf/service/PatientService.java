@@ -7,19 +7,19 @@ import java.util.*;
 
 @Component
 public class PatientService {
-private Map<Integer, SkierowanieDoLekarza> PatientMap = new HashMap<>();
+    private Map<Integer, SkierowanieDoLekarza> patientMap = new HashMap<>();
 
 public SkierowanieDoLekarza createSkierowanie(String lekarz, String pacjent, Date termin) {
     int id = new Random().nextInt();
     SkierowanieDoLekarza skierowanieDoLekarza = new SkierowanieDoLekarza(id, lekarz, pacjent, termin);
-    PatientMap.put(id,skierowanieDoLekarza);
+    patientMap.put(id,skierowanieDoLekarza);
     return skierowanieDoLekarza;
 }
 public Collection<SkierowanieDoLekarza> listaSkierowan() {
-    return PatientMap.values();
+    return patientMap.values();
     }
 
     public SkierowanieDoLekarza getSkierowanie(int id) {
-    return PatientMap.get(id);
+    return patientMap.get(id);
     }
 }
